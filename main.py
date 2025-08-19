@@ -29,6 +29,11 @@ modelo_saida_classes = {
 
 app = FastAPI()
 
+# Para Uptime Robot
+@app.get("/status")
+def get_status():
+    return {"status": "ok"}
+
 @app.get("/")
 def home():
     return "Bem-vindo ao PROMO HQ"
