@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import json
 from starlette.responses import JSONResponse
 from services import scrape_panini
@@ -27,6 +28,20 @@ modelo_saida_classes = {
 }
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:19000",  # Expo em desenvolvimento (web)
+    "exp://127.0.0.1:19000",   # Expo Go no dispositivo
+    "*"                        # Ou '*' para permitir todas as origens (menos seguro)
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
