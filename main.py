@@ -29,21 +29,6 @@ modelo_saida_classes = {
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:19000",  # Expo em desenvolvimento (web)
-    "exp://127.0.0.1:19000",   # Expo Go no dispositivo
-    "exp://10.124.14.33:8081",
-    "*"                        # Ou '*' para permitir todas as origens (menos seguro)
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 @app.get("/")
 def home():
     return "Bem-vindo ao PROMO HQ"
