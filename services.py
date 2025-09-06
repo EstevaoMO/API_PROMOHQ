@@ -6,7 +6,6 @@ def scrape_panini(urls, modelo_de_classes):
     todos_universos = {}
     for universo, url_universoglobal in urls.items():
         dados_universo = []
-        parar = False
 
         for num_pag in range(1, 11):  # Busca apenas nas 10 primeiras páginas
             url = url_universoglobal.format(num_pag=num_pag) # Formata para usar a página atual
@@ -32,7 +31,6 @@ def scrape_panini(urls, modelo_de_classes):
                 if dados_universo:
                     if dados_universo[0]['nome_produto'] == hq_info['nome_produto']:
                             todos_universos[universo] = dados_universo
-                            parar = True
                             break
 
                 # Pré-venda
@@ -60,8 +58,7 @@ def scrape_panini(urls, modelo_de_classes):
 
                 if hq_info and hq_info['preco_antigo']: # Só adiciona se realmente houve dados extraídos
                     dados_universo.append(hq_info)
-            if parar:
-                break
+           
 
         todos_universos[universo] = dados_universo
     
