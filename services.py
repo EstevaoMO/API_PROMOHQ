@@ -29,10 +29,7 @@ def scrape_panini(urls, modelo_de_classes):
                 name_tag = hq.find('a', class_=modelo_de_classes['nome_produto'])
                 if name_tag:
                     hq_info['nome_produto'] = name_tag.text
-                if not hqs.index(hq):
-                    primeira_hq = hq_info['nome_produto']
-                else:
-                    if primeira_hq == hq_info['nome_produto']:
+                if dados_universo[0]['nome_produto'] == hq_info['nome_produto']:
                         todos_universos[universo] = dados_universo
                         return todos_universos
 
