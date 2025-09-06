@@ -33,7 +33,8 @@ def scrape_panini(urls, modelo_de_classes):
                     primeira_hq = hq_info['nome_produto']
                 else:
                     if primeira_hq == hq_info['nome_produto']:
-                        break
+                        todos_universos[universo] = dados_universo
+                        return todos_universos
 
                 # Pré-venda
                 esta_pre_venda = hq.find('span', class_='infobase-label-presale')
