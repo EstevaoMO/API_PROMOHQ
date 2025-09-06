@@ -16,6 +16,13 @@ def scrape_panini(urls, modelo_de_classes):
             for hq in hqs:
                 hq_info = {}
 
+                # Pegando preço antigo
+                preco_antigo_tag = hq.find('span', class_=modelo_de_classes['preco_antigo'])
+                if preco_antigo_tag:
+                    hq_info['preco_antigo'] = preco_antigo_tag.text.strip()
+                else:
+                    continue
+
                 # Pré-venda
                 esta_pre_venda = hq.find('span', class_='infobase-label-presale')
                 if esta_pre_venda:
@@ -37,19 +44,14 @@ def scrape_panini(urls, modelo_de_classes):
                     # Tratando o dataset de links
                     image_urls = img_tag['data-srcset'].split(',')
                     if image_urls:
-                        hq_info['imagem_produto'] = image_urls[-1].strip().split(' ')[0] # Pega o último link do dataset
-
-                # Pegando preço antigo
-                preco_antigo_tag = hq.find('span', class_=modelo_de_classes['preco_antigo'])
-                if preco_antigo_tag:
-                    hq_info['preco_antigo'] = preco_antigo_tag.text.strip()
+                        hq_info['imagem_produto'] = image_urls[-1].strip().split(' ')[0] # Pega o último link do dataset
 
                 # Pegando preço atual
                 preco_atual_tag = hq.find('span', class_=modelo_de_classes['preco_atual'])
                 if preco_atual_tag:
                     hq_info['preco_atual'] = preco_atual_tag.text.strip()
 
-                if hq_info: # Só adiciona se realmente houve dados extraídos
+                if hq_info && preco_antigo: # Só adiciona se realmente houve dados extraídos
                     dados_universo.append(hq_info)
 
         todos_universos[universo] = dados_universo
