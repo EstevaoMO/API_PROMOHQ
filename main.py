@@ -6,16 +6,16 @@ from services import scrape_panini
 
 num_pag = 1 # Página padrão para iniciar
 urls_dc = {
-    "batman": f"https://panini.com.br/dc-comics/universo-batman?p={num_pag}&price=14-105&product_list_order=high_to_low",
-    "superman": f"https://panini.com.br/dc-comics/universo-superman?p={num_pag}&price=14-105&product_list_order=high_to_low",
-    "mulher-maravilha": f"https://panini.com.br/dc-comics/universo-mulher-maravilha?p={num_pag}&price=14-105&product_list_order=high_to_low",
-    "liga-da-justica": f"https://panini.com.br/dc-comics/universo-liga-da-jusica?p={num_pag}&price=14-105&product_list_order=high_to_low",
-    "flash": f"https://panini.com.br/dc-comics/universo-flash?p={num_pag}&price=14-105&product_list_order=high_to_low"
+    "batman": f"https://panini.com.br/dc-comics/universo-batman?p={num_pag}&product_list_order=high_to_low",
+    "superman": f"https://panini.com.br/dc-comics/universo-superman?p={num_pag}&product_list_order=high_to_low",
+    "mulher-maravilha": f"https://panini.com.br/dc-comics/universo-mulher-maravilha?p={num_pag}&product_list_order=high_to_low",
+    "liga-da-justica": f"https://panini.com.br/dc-comics/universo-liga-da-jusica?p={num_pag}&product_list_order=high_to_low",
+    "flash": f"https://panini.com.br/dc-comics/universo-flash?p={num_pag}&product_list_order=high_to_low"
 }
 
 urls_marvel = {
-    "quarteto-fantastico": f"https://panini.com.br/marvel/universo-quarteto-fantastico?p={num_pag}&price=13-199&product_list_order=high_to_low",
-    "homem-aranha": f"https://panini.com.br/marvel/universo-homem-aranha?p={num_pag}&price=13-174&product_list_order=high_to_low"
+    "quarteto-fantastico": f"https://panini.com.br/marvel/universo-quarteto-fantastico?p={num_pag}&product_list_order=high_to_low",
+    "homem-aranha": f"https://panini.com.br/marvel/universo-homem-aranha?p={num_pag}&product_list_order=high_to_low"
 }
 
 modelo_saida_classes = {
