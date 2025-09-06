@@ -23,6 +23,17 @@ def scrape_panini(urls, modelo_de_classes):
                 else:
                     continue
 
+
+                # Pegando nome
+                name_tag = hq.find('a', class_=modelo_de_classes['nome_produto'])
+                if name_tag:
+                    hq_info['nome_produto'] = name_tag.text
+                if !hqs.index(hq):
+                    primeira_hq = hq_info['nome_produto']
+                else:
+                    if primeira_hq == hq_info['nome_produto']:
+                    break
+
                 # Pré-venda
                 esta_pre_venda = hq.find('span', class_='infobase-label-presale')
                 if esta_pre_venda:
@@ -32,11 +43,6 @@ def scrape_panini(urls, modelo_de_classes):
                 link_tag = hq.find('a', class_=modelo_de_classes['link_produto'])
                 if link_tag:
                     hq_info['link_produto'] = link_tag['href']
-
-                # Pegando nome
-                name_tag = hq.find('a', class_=modelo_de_classes['nome_produto'])
-                if name_tag:
-                    hq_info['nome_produto'] = name_tag.text
 
                 # Pegando imagem
                 img_tag = hq.find('img', class_=modelo_de_classes['imagem_produto'])
