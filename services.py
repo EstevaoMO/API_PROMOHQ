@@ -6,6 +6,7 @@ def scrape_panini(urls, modelo_de_classes):
     todos_universos = {}
     for universo, url_universoglobal in urls.items():
         dados_universo = []
+        primeira_hq = "ESTEVÃO"
 
         for num_pag in range(1, 11):  # Busca apenas nas 10 primeiras páginas
             url = url_universoglobal.format(num_pag=num_pag) # Formata para usar a página atual
