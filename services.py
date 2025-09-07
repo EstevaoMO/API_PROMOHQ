@@ -4,15 +4,23 @@ import json
 
 def scrape_panini(urls, modelo_de_classes): 
     todos_universos = {}
+    
     for universo, url_universoglobal in urls.items():
         dados_universo = []
+        total_paginas = 2 # inicia como 2, mas é alterado durante o looping para buscar na mesma requisição e poupar tempo
 
-        for num_pag in range(1, 11):  # Busca apenas nas 10 primeiras páginas
-            url = url_universoglobal.format(num_pag=num_pag) # Formata para usar a página atual
+        for num_pag in range(1, total_paginas):
+            url = url_universoglobal.format(num_pag=num_pag)
             response = requests.get(url)
             soup = BeautifulSoup(response.content, 'html.parser')
             hqs = soup.find_all('li', class_='item product product-item')
 
+            if num_pag == 1:
+                numero_paginas = soup.find('a', class_="page last")
+                
+                if numero_paginas:
+                    total_paginas = int(numero_paginas.text.split()[-1])
+        
             for hq in hqs:
                 hq_info = {}
 
@@ -49,14 +57,15 @@ def scrape_panini(urls, modelo_de_classes):
                     # Tratando o dataset de links
                     image_urls = img_tag['data-srcset'].split(',')
                     if image_urls:
-                        hq_info['imagem_produto'] = image_urls[-1].strip().split(' ')[0] # Pega o último link do dataset
+                        hq_info['imagem_produto'] = image_urls[-1].strip().split(' ')[0] # Pega o último link do dataset
+
 
                 # Pegando preço atual
                 preco_atual_tag = hq.find('span', class_=modelo_de_classes['preco_atual'])
                 if preco_atual_tag:
                     hq_info['preco_atual'] = preco_atual_tag.text.strip()
 
-                if hq_info and hq_info['preco_antigo']: # Só adiciona se realmente houve dados extraídos
+                if hq_info and hq_info['preco_antigo']:
                     dados_universo.append(hq_info)
            
 

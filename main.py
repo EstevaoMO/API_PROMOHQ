@@ -19,6 +19,7 @@ urls_marvel = {
 }
 
 modelo_saida_classes = {
+    "numero_paginas": "page last", # a
     "pre_venda": "infobase-label-presale", # span .text
     "link_produto": "product photo product-item-photo", # a ["href"]
     "nome_produto": "product-item-link", # a .text
