@@ -30,9 +30,13 @@ modelo_saida_classes = {
 
 app = FastAPI()
 
-# Para Uptime Robot
 @app.get("/status")
 def get_status():
+    return {"status": "ok"}
+
+# Para Uptime Robot
+@app.head("/status")
+def status_head():
     return {"status": "ok"}
 
 @app.get("/")
