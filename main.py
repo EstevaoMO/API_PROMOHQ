@@ -10,7 +10,8 @@ urls_dc = {
     "superman": f"https://panini.com.br/dc-comics/universo-superman?p={num_pag}&product_list_order=high_to_low",
     "mulher-maravilha": f"https://panini.com.br/dc-comics/universo-mulher-maravilha?p={num_pag}&product_list_order=high_to_low",
     "liga-da-justica": f"https://panini.com.br/dc-comics/universo-liga-da-jusica?p={num_pag}&product_list_order=high_to_low",
-    "flash": f"https://panini.com.br/dc-comics/universo-flash?p={num_pag}&product_list_order=high_to_low"
+    "flash": f"https://panini.com.br/dc-comics/universo-flash?p={num_pag}&product_list_order=high_to_low",
+    "sandman": f"https://panini.com.br/dc-comics/universo-sandman?p={num_pag}&product_list_order=high_to_low"
 }
 
 urls_marvel = {
