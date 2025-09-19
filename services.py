@@ -1,11 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
-def scrape_panini(urls, modelo_de_classes): 
+def scrape_panini(urls, modelo_de_classes, filtro_universos): 
     todos_universos = {}
     
     for universo, url_universoglobal in urls.items():
+        
+        if filtro_universos:
+            if universo not in filtro_universos:
+                continue
+
         dados_universo = []
         total_paginas = 2 # inicia como 2, mas é alterado durante o looping para buscar na mesma requisição e poupar tempo
 
